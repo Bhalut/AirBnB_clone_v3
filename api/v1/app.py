@@ -27,6 +27,14 @@ def teardown_db(exception):
     storage.close()
 
 
+@app.errorhandler(404)
+def handle_404(exception):
+    """handles 404 errors"""
+    code = exception.__str__().split()[0]
+    message = {'error': "Not found"}
+    return make_response(jsonify(message), code)
+
+
 if __name__ == "__main__":
     """MAIN"""
     app.run(host=host, port=port, threaded=True)
