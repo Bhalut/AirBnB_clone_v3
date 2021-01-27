@@ -3,7 +3,7 @@
 from api.v1.views import app_views
 from flask import abort, jsonify, make_response, request
 from flasgger import Swagger, swag_from
-from models import storage, classes
+from models import storage, CNC
 
 
 @app_views.route('/states', methods=['GET', 'POST'])
@@ -21,7 +21,7 @@ def states_no_id():
             abort(400, 'Not a JSON')
         if req_json.get("name") is None:
             abort(400, 'Missing name')
-        State = classes.get("State")
+        State = CNC.get("State")
         new_object = State(**req_json)
         new_object.save()
         return jsonify(new_object.to_json()), 201

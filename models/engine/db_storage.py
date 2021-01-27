@@ -22,6 +22,15 @@ classes = {"Amenity": Amenity, "City": City,
 
 class DBStorage:
     """interaacts with the MySQL database"""
+    CNC = {
+        'BaseModel': base_model.BaseModel,
+        'Amenity': amenity.Amenity,
+        'City': city.City,
+        'Place': place.Place,
+        'Review': review.Review,
+        'State': state.State,
+        'User': user.User
+    }
     __engine = None
     __session = None
 
