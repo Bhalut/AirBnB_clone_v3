@@ -9,7 +9,7 @@ from models import storage, CNC
 @app_views.route('/states', methods=['GET', 'POST'])
 @swag_from('swagger_yaml/states_no_id.yml', methods=['GET', 'POST'])
 def states_no_id():
-    """Method to handle http for requested states"""
+    """Method to handle http for requested states."""
     if request.method == 'GET':
         all_states = storage.all('State')
         all_states = list(obj.to_json() for obj in all_states.values())
@@ -30,7 +30,7 @@ def states_no_id():
 @app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'])
 @swag_from('swagger_yaml/states_id.yml', methods=['PUT', 'GET', 'DELETE'])
 def states_with_id(state_id=None):
-    """Method to handle http for requested state by id"""
+    """Method to handle http for requested state by id."""
     state_obj = storage.get('State', state_id)
     if state_obj is None:
         abort(404, 'Not found')
