@@ -1,16 +1,18 @@
 #!/usr/bin/python3
 """
-Flask App that integrates with AirBnB static HTML Template
+Flask REST API module
 """
 from api.v1.views import app_views
 from flask import Flask, jsonify, make_response, render_template, url_for
 from models import storage
 from flasgger import Swagger
+from flask_cors import CORS
 import os
 
 
 app = Flask(__name__)
 swagger = Swagger(app)
+cors = CORS(app, resources={r"/*": {"origins": "0.0.0.0"}})
 
 app.url_map.strict_slashes = False
 
