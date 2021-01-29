@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """ cities
 
-    cities module
+    cities module RestFull API
 """
 from api.v1.views import app_views
 from flask import jsonify, make_response, abort, request
