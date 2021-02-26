@@ -1,10 +1,6 @@
 
 #!/usr/bin/python3
-""" app
-
-    Flask REST API module
 """
-<<<<<<< HEAD
 Flask App that integrates with AirBnB static HTML Template
 """
 from api.v1.views import app_views
@@ -30,37 +26,20 @@ port = os.getenv('HBNB_API_PORT', 5000)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
 
 # app_views BluePrint defined in api.v1.views
-=======
-from flask import Flask, Blueprint, make_response, jsonify
-from models import storage
-from api.v1.views import app_views
-from os import getenv
-from flask_cors import CORS
-
-app = Flask(__name__)
-cors = CORS(app, resources={"/*": {"origins": "0.0.0.0"}})
->>>>>>> 8397de5d834b17df14283d8f11584ff1dbca1560
 app.register_blueprint(app_views)
-app.config['JSONIFY_PRETTYPRINT_REGULAR'] = True
 
 
 # begin flask page rendering
 @app.teardown_appcontext
-<<<<<<< HEAD
 def teardown_db(exception):
     """
     after each request, this method calls .close() (i.e. .remove()) on
     the current SQLAlchemy Session
     """
-=======
-def close(error):
-    """ Call method close() from storage """
->>>>>>> 8397de5d834b17df14283d8f11584ff1dbca1560
     storage.close()
 
 
 @app.errorhandler(404)
-<<<<<<< HEAD
 def handle_404(exception):
     """
     handles 404 errors, in the event that global error handler fails
@@ -96,18 +75,6 @@ def global_error_handler(err):
         message = {'error': err}
         code = 500
     return make_response(jsonify(message), code)
-=======
-def not_found(error):
-    """Response for error code 404
-
-    Args:
-        error
-
-    Returns:
-        response
-    """
-    return make_response(jsonify({'error': 'Not found'}), 404)
->>>>>>> 8397de5d834b17df14283d8f11584ff1dbca1560
 
 
 def setup_global_errors():
@@ -119,7 +86,6 @@ def setup_global_errors():
 
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     """
     MAIN Flask App
     """
@@ -127,8 +93,3 @@ if __name__ == "__main__":
     setup_global_errors()
     # start Flask app
     app.run(host=host, port=port)
-=======
-    host = getenv("HBNB_API_HOST", "0.0.0.0")
-    port = getenv("HBNB_API_PORT", "5000")
-    app.run(host, port, threaded=True)
->>>>>>> 8397de5d834b17df14283d8f11584ff1dbca1560
